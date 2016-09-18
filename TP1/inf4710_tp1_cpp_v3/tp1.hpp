@@ -39,41 +39,59 @@ inline std::vector<LZ77Code> lz77_encode(const std::vector<uint8_t>& vSignal, si
 		signalIndex++;
 	}
 
-	while (signalIndex != vSignal.size()) {
-		bool stop = false;
-		LZ77Code code;
+	while (signalIndex < vSignal.size() + (N - n1)) {
+		LZ77Code code = {};
 		code.nLength = 1;
+
 		// Iterate through left window to find first match
+		bool found = false;
 		for (int i = n1 - 1; i > 0; i--) {
 			if (window[i] == window[n1]) {
 				code.nIdx = n1 - i;
+				found = true;
 				break;
 			}
 		}
+		if (found) {
+			// Find Length
+			for (int i = 1; i < N - n1 && i < (N - n1) - (signalIndex - vSignal.size()); i++) { // Search within right windows max length, stop before end of vSignal
+				if (window[n1 - code.nIdx + i] == window[n1 + i]) {
+					code.nLength++;
+				}
+				// Serie if different from here, max length found
+				else {
+					code.nNextSymbol = window[n1 + i];
+					break;
+				}
+				//handle case when it matches until the end of the right window
+				if (i + 1 == N - n1) {
+					code.nNextSymbol = vSignal.back();
+				}
+			}
+		}
 
-		// Find Length
-		for (int i = 1; i < N - n1; i++) {
-			if (window[n1 - code.nIdx + i] == window[n1 + i]) {
-				code.nLength++;
-			}
-			// Serie if different from here, max length found
-			else {
-				code.nNextSymbol = window[n1 + i];
-				break;
-			}
-			//handle case when it matches until the end of the right window
-			if (i + 1 == N - n1) {
-				code.nNextSymbol = vSignal.back();
-			}
+		// Symbol not fond in window
+		else {
+			code.nLength = 0;
+			code.nIdx = 0;
+			code.nNextSymbol = window[n1];
 		}
 
 		// Push data in window to the left and append new data from signal
-		for (int i = 0; i < code.nLength+1 && signalIndex != vSignal.size(); i++) {
+		for (int i = 0; i < code.nLength + 1 && signalIndex < vSignal.size() + (N - n1); i++) {
 			window.pop_front();
-			window.push_back(vSignal[signalIndex]);
+			// There is still data in vSignal
+			if (signalIndex < vSignal.size()) {
+				window.push_back(vSignal[signalIndex]);
+			}
+			// No more data in vSignal, but still need to empty the right windows
+			else {
+				window.push_back(0);
+			}
 			signalIndex++;
 		}
 
+		vCode.push_back(code);
 	}
     return vCode;
 }
@@ -82,6 +100,11 @@ inline std::vector<uint8_t> lz77_decode(const std::vector<LZ77Code>& vCode, size
     CV_Assert(N>0 && n1>0 && N>n1 && n1<UCHAR_MAX && !vCode.empty());
     std::vector<uint8_t> vSignal;
     // ... @@@@@ TODO (decode vCode triplets using lz77, and put original values in vSignal)
+	
+	// Iterate over vCode
+	for (int i = 0; i < vCode.size(); i++) {
+
+	}
     return vSignal;
 }
 
