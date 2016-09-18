@@ -11,6 +11,15 @@ int main(int /*argc*/, char** /*argv*/) {
 		for (int i = 0; i < encodedData.size(); i++) {
 			std::cout << encodedData[i].to_string() << std::endl;
 		}
+
+		for (int i = 0; i < datatest.size(); i++) {
+			std::cout << (int)datatest[i] << ", ";
+		}
+		std::cout << std::endl;
+		std::vector<uint8_t> decodedDate = lz77_decode(encodedData, 18, 9);
+		for (int i = 0; i < decodedDate.size(); i++) {
+			std::cout << (int)decodedDate[i] << ", ";
+		}
 		std::cin.get();
 		return 0;
         // note: by default, imread always returns 3-ch images unless the cv::IMREAD_GRAYSCALE flag is set (here we hardcode it based on prior knowledge)

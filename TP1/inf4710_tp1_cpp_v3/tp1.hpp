@@ -101,9 +101,28 @@ inline std::vector<uint8_t> lz77_decode(const std::vector<LZ77Code>& vCode, size
     std::vector<uint8_t> vSignal;
     // ... @@@@@ TODO (decode vCode triplets using lz77, and put original values in vSignal)
 	
+	std::vector<uint8_t> dict(n1,0);
 	// Iterate over vCode
-	for (int i = 0; i < vCode.size(); i++) {
+	for (int j = 0; j < vCode.size(); j++) {
+		uint8_t length = vCode[j].nLength;
 
+		// Getting the serie of symbols
+		std::vector<uint8_t> serie;
+		for (int i = 0; i < length && i < vCode[j].nIdx; i++) {
+			serie.push_back(dict[(dict.size() - vCode[j].nIdx) + i]);
+		}
+
+
+		// Pushing the serie, repeating for the all length required 
+		for (int i = 0; i < length; i++) {
+			dict.push_back(serie[i%serie.size()]);
+			vSignal.push_back(serie[i%serie.size()]);
+		}
+
+		// Adding next symbol at the end
+		dict.push_back(vCode[j].nNextSymbol);
+		vSignal.push_back(vCode[j
+		].nNextSymbol);
 	}
     return vSignal;
 }
