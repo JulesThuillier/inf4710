@@ -131,6 +131,22 @@ inline std::vector<uint8_t> format_signal(const cv::Mat& oInputImage) {
     CV_Assert(!oInputImage.empty() && oInputImage.isContinuous() && (oInputImage.type()==CV_8UC1 || oInputImage.type()==CV_8UC3));
     std::vector<uint8_t> vSignal;
     // ... @@@@@ TODO (put oInputImage data in vSignal in correct order/format)
+
+	// B&W Image
+	if (oInputImage.type() == CV_8UC1) {
+		vSignal.assign(oInputImage.data, oInputImage.data + oInputImage.cols*oInputImage.rows);
+	}
+
+	//RGB Image
+	else if (oInputImage.type() == CV_8UC3) {
+		cv::Mat BGR_3[3];
+		cv::split(oInputImage, BGR_3);
+		vSignal.assign(BGR_3[0].data, BGR_3[0].data + BGR_3[0].cols*BGR_3[0].rows);
+		vSignal.insert(vSignal.end(), BGR_3[1].data, BGR_3[1].data + BGR_3[1].cols*BGR_3[1].rows);
+		vSignal.insert(vSignal.end()
+			, BGR_3[2].data, BGR_3[2].data + BGR_3[2].cols*BGR_3[2].rows);
+	}
+
     return vSignal;
 }
 
