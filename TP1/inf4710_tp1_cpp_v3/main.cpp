@@ -5,6 +5,8 @@ using ImagePathFlag = std::pair<std::string,int>; // first = image path, second 
 
 int main(int /*argc*/, char** /*argv*/) {
     try {
+		std::cout << "Hello this is test" << std::endl;
+		std::cin.get();
         // note: by default, imread always returns 3-ch images unless the cv::IMREAD_GRAYSCALE flag is set (here we hardcode it based on prior knowledge)
         const std::vector<ImagePathFlag> vsTestImages = {
             {"data/test1.png",cv::IMREAD_GRAYSCALE},

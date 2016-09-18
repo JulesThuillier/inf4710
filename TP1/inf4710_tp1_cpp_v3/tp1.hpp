@@ -11,6 +11,7 @@
 #include <exception>
 #include <iostream>
 #include <string>
+#include <deque>
 #include <opencv2/opencv.hpp>
 
 struct LZ77Code {
@@ -26,6 +27,54 @@ inline std::vector<LZ77Code> lz77_encode(const std::vector<uint8_t>& vSignal, si
     CV_Assert(N>0 && n1>0 && N>n1 && n1<UCHAR_MAX && !vSignal.empty());
     std::vector<LZ77Code> vCode;
     // ... @@@@@ TODO (encode vSignal using lz77, and put triplets in vCode)
+
+	// Initialize Searching Window with 0
+	std::deque<uint8_t> window(N,0);
+	int signalIndex = 0;
+
+	// Fill in right windows with Datas from vSignal
+	for (int i = 0; i < N - n1; i++) {
+		window.pop_front();
+		window.push_back(vSignal[signalIndex]);
+		signalIndex++;
+	}
+
+	while (signalIndex != vSignal.size()) {
+		bool stop = false;
+		LZ77Code code;
+		code.nLength = 1;
+		// Iterate through left window to find first match
+		for (int i = n1 - 1; i > 0; i--) {
+			if (window[i] == window[n1]) {
+				code.nIdx = n1 - i;
+				break;
+			}
+		}
+
+		// Find Length
+		for (int i = 1; i < N - n1; i++) {
+			if (window[n1 - code.nIdx + i] == window[n1 + i]) {
+				code.nLength++;
+			}
+			// Serie if different from here, max length found
+			else {
+				code.nNextSymbol = window[n1 + i];
+				break;
+			}
+			//handle case when it matches until the end of the right window
+			if (i + 1 == N - n1) {
+				code.nNextSymbol = vSignal.back();
+			}
+		}
+
+		// Push data in window to the left and append new data from signal
+		for (int i = 0; i < code.nLength+1 && signalIndex != vSignal.size(); i++) {
+			window.pop_front();
+			window.push_back(vSignal[signalIndex]);
+			signalIndex++;
+		}
+
+	}
     return vCode;
 }
 
