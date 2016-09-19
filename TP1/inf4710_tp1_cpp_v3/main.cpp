@@ -47,27 +47,24 @@ int main(int /*argc*/, char** /*argv*/) {
 			std::vector<uint8_t> orig_img = format_signal(oInputImg);
 			std::cout << "		Original img size : " << orig_img.size() << std::endl;
 			std::vector<LZ77Code> encoded_img = lz77_encode(orig_img, 100, 50);
-			std::cout << "		Encoded img size WARNING : " << encoded_img.size() << std::endl;
-			std::cin;
+			std::cout << "		Encoded img size : " << encoded_img.size()*3 << std::endl; // x3 because the LZ77Code struct contains 3 uint8_t
 			std::vector<uint8_t> decoded_img = lz77_decode(encoded_img, 100, 50);
 			std::cout << "		Decoded img size : " << decoded_img.size() << std::endl;
-			std::cin;
 			std::vector<uint8_t> final_image = reformat_image(decoded_img, oInputImg.size());
 			std::cout << "		Final img size : " << final_image.size() << std::endl;
-            
+			system("PAUSE");
+			
+			
         }
     }
     catch(const cv::Exception& e) {
         std::cerr << "Caught cv::Exceptions: " << e.what() << std::endl;
-		std::cin;
     }
     catch(const std::runtime_error& e) {
         std::cerr << "Caught std::runtime_error: " << e.what() << std::endl;
-		std::cin;
     }
     catch(...) {
         std::cerr << "Caught unhandled exception." << std::endl;
-		std::cin;
     }
     return 0;
 }

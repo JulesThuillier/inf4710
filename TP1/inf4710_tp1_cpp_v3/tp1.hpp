@@ -121,8 +121,7 @@ inline std::vector<uint8_t> lz77_decode(const std::vector<LZ77Code>& vCode, size
 
 		// Adding next symbol at the end
 		dict.push_back(vCode[j].nNextSymbol);
-		vSignal.push_back(vCode[j
-		].nNextSymbol);
+		vSignal.push_back(vCode[j].nNextSymbol);
 	}
     return vSignal;
 }
