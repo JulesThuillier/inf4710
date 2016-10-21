@@ -39,7 +39,7 @@ int main(int /*argc*/, char** /*argv*/) {
             // COMPRESSION
             cv::Mat_<uchar> Y,Cb,Cr;
             conv_rgb2ycbcr(oInput,USE_SUBSAMPLING,Y,Cb,Cr);
-            const std::vector<cv::Mat_<uchar>> vBlocks_Y = decoup(Y);
+          /*  const std::vector<cv::Mat_<uchar>> vBlocks_Y = decoup(Y);
             const std::vector<cv::Mat_<uchar>> vBlocks_Cb = decoup(Cb);
             const std::vector<cv::Mat_<uchar>> vBlocks_Cr = decoup(Cr);
             std::vector<cv::Mat_<uchar>> vBlocks;
@@ -75,10 +75,10 @@ int main(int /*argc*/, char** /*argv*/) {
             const std::vector<cv::Mat_<uchar>> vBlocks_Cr_decompr(vBlocks_decompr.begin()+vBlocks_Y.size()+vBlocks_Cb.size(),vBlocks_decompr.end());
             const cv::Mat_<uchar> Y_decompr = decoup_inv(vBlocks_Y_decompr,Y.size());
             const cv::Mat_<uchar> Cb_decompr = decoup_inv(vBlocks_Cb_decompr,Cb.size());
-            const cv::Mat_<uchar> Cr_decompr = decoup_inv(vBlocks_Cr_decompr,Cr.size());
-            cv::Mat oInput_decompr;
-            conv_ycbcr2rgb(Y_decompr,Cb_decompr,Cr_decompr,USE_SUBSAMPLING,oInput_decompr);
-
+            const cv::Mat_<uchar> Cr_decompr = decoup_inv(vBlocks_Cr_decompr,Cr.size());*/
+            cv::Mat oInput_decompr; 
+           // conv_ycbcr2rgb(Y_decompr,Cb_decompr,Cr_decompr,USE_SUBSAMPLING,oInput_decompr);
+			conv_ycbcr2rgb(Y, Cb, Cr, USE_SUBSAMPLING, oInput_decompr);
             cv::Mat oDisplay;
             cv::hconcat(oInput,oInput_decompr,oDisplay);
             cv::Mat oDiff;
