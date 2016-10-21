@@ -45,10 +45,10 @@ inline void conv_rgb2ycbcr(const cv::Mat& RGB, bool bSubsample, cv::Mat_<uchar>&
 				Cr_ = cv::saturate_cast<uchar>(128 + 0.713*(RGB.at<cv::Vec3b>(i, j)[0] - Y_));
 
 				// Clamping
-				Y.at<uchar>(i, j) = cv::saturate_cast<uchar>(Y_);
+				Y.at<uchar>(i, j) = Y_;
 				if (i%2==0 && j%2==0) {
-					Cr.at<uchar>(floor(i / 2), floor(j / 2)) = cv::saturate_cast<uchar>(Cr_);
-					Cb.at<uchar>(floor(i / 2), floor(j / 2)) = cv::saturate_cast<uchar>(Cb_);
+					Cr.at<uchar>(floor(i / 2), floor(j / 2)) = Cr_;
+					Cb.at<uchar>(floor(i / 2), floor(j / 2)) = Cb_;
 				}
 			}
 		} 

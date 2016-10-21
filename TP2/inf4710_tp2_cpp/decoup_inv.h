@@ -21,7 +21,7 @@ inline cv::Mat_<T> decoup_inv(const std::vector<cv::Mat_<T>>& vBlocks, const cv:
 			{
 				for (int i = 0; i < 8; i++)
 				{
-					oOutput[k+i][l+j] = vBlocks[blockIndex][i][j];
+					oOutput.at<T>(k+i, l+j) = (vBlocks[blockIndex]).at<T>(i,j);
 				}
 			}
 			blockIndex++;
