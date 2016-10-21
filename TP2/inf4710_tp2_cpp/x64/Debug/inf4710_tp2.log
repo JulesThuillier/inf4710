@@ -1,0 +1,28 @@
+﻿Build started 10/19/2016 1:23:49 PM.
+     1>Project "C:\Users\Dominic\Documents\Poly\Intro tech\Tp\inf4710\TP2\inf4710_tp2_cpp\inf4710_tp2.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\CL.exe /c /I"C:\Users\Dominic\Documents\Poly\Intro tech\Tp\inf4710\TP2\inf4710_tp2_cpp\opencv_include" /ZI /nologo /W3 /WX- /Od /D _SCL_SECURE_NO_WARNINGS /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"x64\Debug\\" /Fd"x64\Debug\vc140.pdb" /Gd /TP /errorReport:prompt dct.h decoup_inv.h
+         decoup_inv.h
+         dct.h
+         Generating Code...
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Dominic\Documents\Poly\Intro tech\Tp\inf4710\TP2\inf4710_tp2_cpp\x64\Debug\inf4710_tp2.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Users\Dominic\Documents\Poly\Intro tech\Tp\inf4710\TP2\inf4710_tp2_cpp\opencv_lib" opencv_world310d.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"C:\Users\Dominic\Documents\Poly\Intro tech\Tp\inf4710\TP2\inf4710_tp2_cpp\x64\Debug\inf4710_tp2.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Dominic\Documents\Poly\Intro tech\Tp\inf4710\TP2\inf4710_tp2_cpp\x64\Debug\inf4710_tp2.lib" /MACHINE:X64 x64\Debug\main.obj
+         x64\Debug\conv_rgb2ycbcr.obj
+         x64\Debug\conv_ycbcr2rgb.obj
+         x64\Debug\dct.obj
+         x64\Debug\dct_inv.obj
+         x64\Debug\decoup.obj
+         x64\Debug\decoup_inv.obj
+         x64\Debug\huff.obj
+         x64\Debug\huff_common.obj
+         x64\Debug\huff_inv.obj
+         x64\Debug\quantif.obj
+         x64\Debug\quantif_inv.obj
+         x64\Debug\zigzag.obj
+         x64\Debug\zigzag_inv.obj
+         inf4710_tp2.vcxproj -> C:\Users\Dominic\Documents\Poly\Intro tech\Tp\inf4710\TP2\inf4710_tp2_cpp\x64\Debug\inf4710_tp2.exe
+     1>Done Building Project "C:\Users\Dominic\Documents\Poly\Intro tech\Tp\inf4710\TP2\inf4710_tp2_cpp\inf4710_tp2.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:11.80
