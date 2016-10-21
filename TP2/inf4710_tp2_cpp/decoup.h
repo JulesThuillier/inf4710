@@ -10,10 +10,10 @@ inline std::vector<cv::Mat_<T>> decoup(const cv::Mat_<T>& oImage) {
     std::vector<cv::Mat_<T>> vOutput;
 
     // @@@@ TODO
-	cv::Mat_<T>& temp;
-	for (int l = 0; l < oImage.rows; l += 8;)
+	cv::Mat_<T>& temp = cv::Mat_<T>(8, 8);
+	for (int l = 0; l < oImage.rows; l += 8)
 	{
-		for (int k = 0; k < oImage.cols; k += 8;)
+		for (int k = 0; k < oImage.cols; k += 8)
 		{
 			for (int j = 0; j < 8; j++)
 			{

@@ -13,9 +13,9 @@ inline cv::Mat_<T> decoup_inv(const std::vector<cv::Mat_<T>>& vBlocks, const cv:
     // @@@@ TODO
 
 	int blockIndex = 0;
-	for (int l = 0; l < oImageSize.height; l += 8;)
+	for (int l = 0; l < oImageSize.height; l += 8)
 	{
-		for (int k = 0; k < oImageSize.width; k += 8;)
+		for (int k = 0; k < oImageSize.width; k += 8)
 		{
 			for (int j = 0; j < 8; j++)
 			{

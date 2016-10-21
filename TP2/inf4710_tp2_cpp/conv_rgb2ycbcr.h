@@ -19,17 +19,14 @@ inline void conv_rgb2ycbcr(const cv::Mat& RGB, bool bSubsample, cv::Mat_<uchar>&
 			{
 				uchar Y_, Cr_, Cb_;
 
-				Y_ = 0.299*RGB.at<cv::Vec3b>(i, j)[0] + 0.587*RGB.at<cv::Vec3b>(i, j)[1] + 0.114*RGB.at<cv::Vec3b>(i, j)[2];
-				Cr_ = 128 + 0.564*(RGB.at<cv::Vec3b>(i, j)[2] - Y_);
-				Cb_ = 128 + 0.713*(RGB.at<cv::Vec3b>(i, j)[0] - Y_);
+				Y_ = cv::saturate_cast<uchar>(0.299*RGB.at<cv::Vec3b>(i, j)[0] + 0.587*RGB.at<cv::Vec3b>(i, j)[1] + 0.114*RGB.at<cv::Vec3b>(i, j)[2]);
+				Cb_ = cv::saturate_cast<uchar>(128 + 0.564*(RGB.at<cv::Vec3b>(i, j)[2] - Y_));
+				Cr_ = cv::saturate_cast<uchar>(128 + 0.713*(RGB.at<cv::Vec3b>(i, j)[0] - Y_));
 
 				// Clamping
-				if (Y_ < 0) { Y_ = 0; } if (Cr_ < 0) { Cr_ = 0; } if (Cb_ < 0) { Cb_ = 0; }
-				if (Y_ > 255) { Y_ = 255; } if (Cr_ > 255) { Cr_ = 255; } if (Cb_ > 255) { Cb_ = 255; }
-
-				Y.at<cv::Vec3b>(i, j) = Y_;
-				Cr.at<cv::Vec3b>(i, j) = Cr_;
-				Cb.at<cv::Vec3b>(i, j) = Cb_;
+				Y.at<uchar>(i, j) = Y_;
+				Cr.at<uchar>(i, j) = Cr_;
+				Cb.at<uchar>(i, j) = Cb_;
 			}
 		}
 	}
@@ -43,20 +40,17 @@ inline void conv_rgb2ycbcr(const cv::Mat& RGB, bool bSubsample, cv::Mat_<uchar>&
 			{
 				uchar Y_, Cr_, Cb_;
 
-				Y_ = 0.299*RGB.at<cv::Vec3b>(i, j)[0] + 0.587*RGB.at<cv::Vec3b>(i, j)[1] + 0.114*RGB.at<cv::Vec3b>(i, j)[2];
-				Cr_ = 128 + 0.564*(RGB.at<cv::Vec3b>(i, j)[2] - Y_);
-				Cb_ = 128 + 0.713*(RGB.at<cv::Vec3b>(i, j)[0] - Y_);
+				Y_ = cv::saturate_cast<uchar>(0.299*RGB.at<cv::Vec3b>(i, j)[0] + 0.587*RGB.at<cv::Vec3b>(i, j)[1] + 0.114*RGB.at<cv::Vec3b>(i, j)[2]);
+				Cb_ = cv::saturate_cast<uchar>(128 + 0.564*(RGB.at<cv::Vec3b>(i, j)[2] - Y_));
+				Cr_ = cv::saturate_cast<uchar>(128 + 0.713*(RGB.at<cv::Vec3b>(i, j)[0] - Y_));
 
 				// Clamping
-				if (Y_ < 0) { Y_ = 0; } if (Cr_ < 0) { Cr_ = 0; } if (Cb_ < 0) { Cb_ = 0; }
-				if (Y_ > 255) { Y_ = 255; } if (Cr_ > 255) { Cr_ = 255; } if (Cb_ > 255) { Cb_ = 255; }
-
-				Y.at<cv::Vec3b>(floor(i), floor(j)) = Y_;
+				Y.at<uchar>(i, j) = cv::saturate_cast<uchar>(Y_);
 				if (i%2==0 && j%2==0) {
-					Cr.at<cv::Vec3b>(i / 2, j / 2) = Cr_;
-					Cb.at<cv::Vec3b>(i / 2, j / 2) = Cb_;
+					Cr.at<uchar>(floor(i / 2), floor(j / 2)) = cv::saturate_cast<uchar>(Cr_);
+					Cb.at<uchar>(floor(i / 2), floor(j / 2)) = cv::saturate_cast<uchar>(Cb_);
 				}
 			}
-		}
-	}
+		} 
+	} 
 }

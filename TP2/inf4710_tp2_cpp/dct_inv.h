@@ -46,8 +46,8 @@ inline cv::Mat_<Tout> dct_inv(const cv::Mat_<Tin>& oBlock) {
 					index = u * oBlock.cols + v;
 
 					C = (int)oBlock.data[index];
-					arg1 = cos((PI*(2 * (i - 1) + 1)*(u - 1)) / (2 * oBlock.rows));
-					arg2 = cos((PI*(2 * (j - 1) + 1)*(v - 1)) / (2 * oBlock.cols));
+					float arg1 = cos((PI*(2 * (i - 1) + 1)*(u - 1)) / (2 * oBlock.rows));
+					float arg2 = cos((PI*(2 * (j - 1) + 1)*(v - 1)) / (2 * oBlock.cols));
 
 					sum = cu * cv * C * arg1 * arg2;
 					sums += sum;
