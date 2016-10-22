@@ -10,6 +10,27 @@ inline std::array<T,nBlockSize*nBlockSize> zigzag(const cv::Mat_<T>& oBlock) {
     std::array<T,nBlockSize*nBlockSize> aZigzag;
 
     // @@@@ TODO
+
+	int index = 0;
+	for (int i = 0; i < aZigzag.size(); i++) {
+		if (i % 2 == 0) {
+			for (int x = i; x >= 0; x--) {
+				// valid matrix index
+				if ((x < nBlockSize) && (i - x < nBlockSize)) {
+					aZigzag[index] = oBlock.at<T>(x,i - x);
+					index++;
+				}
+			}
+		}
+		else {
+			for (int x = 0; x <= i; x++) {
+				if ((x < nBlockSize) && (i - x < nBlockSize)) {
+					aZigzag[index] = oBlock.at<T>(x, i - x);
+					index++;
+				}
+			}
+		}
+	}
 	
 	return aZigzag;
 }
