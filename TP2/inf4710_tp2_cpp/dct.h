@@ -64,13 +64,13 @@ inline cv::Mat_<Tout> dct(const cv::Mat_<Tin>& oBlock) {
 	//cv::Mat opencvdct = cv::Mat::zeros(oBlock.rows, oBlock.cols, CV_32F);
 	//cv::dct(oBlock, opencvdct);
 
-	cv::Mat fimage;
+/*	cv::Mat fimage;
 	oBlock.convertTo(fimage, CV_32F, 1.0 / 255);
 	cv::Mat dimage;
 	cv::dct(fimage, dimage);
 	std::cout << "Input: " << std::endl << oBlock << std::endl;
 	std::cout << "Calculated DCT: " << std::endl << oOutput << std::endl;
-	std::cout << "OpenCV DCT: " << std::endl << dimage << std::endl;
+	std::cout << "OpenCV DCT: " << std::endl << dimage << std::endl;*/
     return oOutput;
 
 

@@ -22,6 +22,11 @@ inline cv::Mat_<Tout> quantif_inv(const cv::Mat_<Tin>& oBlock, int nQualityFacto
     cv::Mat_<Tout> oOutput(oBlock.size());
 
     // @@@@ TODO (multiply all elements in oBlock by those in oQuantifMat and return them in oOutput)
-    
+	for (int i = 0; i < oBlock.rows; i++) {
+		for (int j = 0; j < oBlock.cols; j++) {
+			oOutput.at<Tout>(i, j) = (Tout)(oBlock.at<Tin>(i, j) * oQuantifMat.at<Tout>(i, j));
+		}
+	}
+
     return oOutput;
 }
