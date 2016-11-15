@@ -1,0 +1,28 @@
+﻿Build started 10/24/2016 1:38:54 PM.
+     1>Project "C:\Users\Dominic\Documents\Poly\Intro tech\Tp\inf4710-master\TP2\inf4710_tp2_cpp\inf4710_tp2.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\CL.exe /c /I"C:\Users\Dominic\Documents\Poly\Intro tech\Tp\inf4710-master\TP2\inf4710_tp2_cpp\opencv_include" /ZI /nologo /W3 /WX- /Od /D _SCL_SECURE_NO_WARNINGS /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"x64\Debug\\" /Fd"x64\Debug\vc140.pdb" /Gd /TP /errorReport:prompt main.cpp
+         main.cpp
+     1>c:\users\dominic\documents\poly\intro tech\tp\inf4710-master\tp2\inf4710_tp2_cpp\conv_rgb2ycbcr.h(50): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+     1>c:\users\dominic\documents\poly\intro tech\tp\inf4710-master\tp2\inf4710_tp2_cpp\conv_rgb2ycbcr.h(51): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+     1>c:\users\dominic\documents\poly\intro tech\tp\inf4710-master\tp2\inf4710_tp2_cpp\conv_ycbcr2rgb.h(41): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+     1>c:\users\dominic\documents\poly\intro tech\tp\inf4710-master\tp2\inf4710_tp2_cpp\conv_ycbcr2rgb.h(41): warning C4244: '=': conversion from 'double' to 'uchar', possible loss of data
+     1>c:\users\dominic\documents\poly\intro tech\tp\inf4710-master\tp2\inf4710_tp2_cpp\conv_ycbcr2rgb.h(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+     1>c:\users\dominic\documents\poly\intro tech\tp\inf4710-master\tp2\inf4710_tp2_cpp\conv_ycbcr2rgb.h(42): warning C4244: '=': conversion from 'double' to 'uchar', possible loss of data
+     1>c:\users\dominic\documents\poly\intro tech\tp\inf4710-master\tp2\inf4710_tp2_cpp\conv_ycbcr2rgb.h(43): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+     1>c:\users\dominic\documents\poly\intro tech\tp\inf4710-master\tp2\inf4710_tp2_cpp\conv_ycbcr2rgb.h(43): warning C4244: '=': conversion from 'double' to 'uchar', possible loss of data
+     1>c:\users\dominic\documents\poly\intro tech\tp\inf4710-master\tp2\inf4710_tp2_cpp\main.cpp(64): error C3867: 'std::vector<bool,std::allocator<_Ty>>::size': non-standard syntax; use '&' to create a pointer to member
+                 with
+                 [
+                     _Ty=bool
+                 ]
+     1>c:\users\dominic\documents\poly\intro tech\tp\inf4710-master\tp2\inf4710_tp2_cpp\main.cpp(64): error C2297: '/': illegal, right operand has type 'unsigned __int64 (__cdecl std::vector<bool,std::allocator<_Ty>>::* )(void) noexcept const'
+                 with
+                 [
+                     _Ty=bool
+                 ]
+     1>Done Building Project "C:\Users\Dominic\Documents\Poly\Intro tech\Tp\inf4710-master\TP2\inf4710_tp2_cpp\inf4710_tp2.vcxproj" (Build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:05.10
