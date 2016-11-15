@@ -1,2 +1,6 @@
 #TargetFrameworkVersion=v4.0:PlatformToolSet=v140:EnableManagedIncrementalBuild=false:VCToolArchitecture=Native32Bit
+<<<<<<< HEAD
 Debug|x64|C:\Users\Dominic\Documents\Poly\Intro tech\Tp\inf4710-master\TP2\inf4710_tp2_cpp\|
+=======
+Debug|x64|C:\Users\Dominic\Documents\Poly\Intro tech\Tp\inf4710\TP2\inf4710_tp2_cpp\|
+>>>>>>> d1084ba4883325c73782719021fbdfa46b1063ca

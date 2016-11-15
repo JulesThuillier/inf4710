@@ -132,16 +132,28 @@ inline std::vector<uint8_t> format_signal(const cv::Mat& oInputImage) {
     // ... @@@@@ TODO (put oInputImage data in vSignal in correct order/format)
 
 	// B&W Image
+<<<<<<< HEAD
 	if (oInputImage.type() == CV_8UC1) {
+=======
+	if (oInputImage.type() == CV_8UC1) {
+>>>>>>> d1084ba4883325c73782719021fbdfa46b1063ca
 		vSignal.assign(oInputImage.data, oInputImage.data + oInputImage.cols*oInputImage.rows);
 	}
 
 	//RGB Image
+<<<<<<< HEAD
 	else if (oInputImage.type() == CV_8UC3) {
 		cv::Mat BGR_3[3];
 		cv::split(oInputImage, BGR_3);
 		vSignal.assign(BGR_3[0].data, BGR_3[0].data + BGR_3[0].cols*BGR_3[0].rows);
 		vSignal.insert(vSignal.end(), BGR_3[1].data, BGR_3[1].data + BGR_3[1].cols*BGR_3[1].rows);
+=======
+	else if (oInputImage.type() == CV_8UC3) {
+		cv::Mat BGR_3[3];
+		cv::split(oInputImage, BGR_3);
+		vSignal.assign(BGR_3[0].data, BGR_3[0].data + BGR_3[0].cols*BGR_3[0].rows);
+		vSignal.insert(vSignal.end(), BGR_3[1].data, BGR_3[1].data + BGR_3[1].cols*BGR_3[1].rows);
+>>>>>>> d1084ba4883325c73782719021fbdfa46b1063ca
 		vSignal.insert(vSignal.end()
 			, BGR_3[2].data, BGR_3[2].data + BGR_3[2].cols*BGR_3[2].rows);
 	}

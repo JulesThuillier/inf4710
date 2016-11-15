@@ -9,5 +9,9 @@ inline std::vector<std::array<T,N>> huff_inv(const HuffOutput<T>& oInput) {
     std::vector<std::array<T,N>> vvOutput;
 
     // @@@@ TODO
+<<<<<<< HEAD
+=======
+   
+>>>>>>> d1084ba4883325c73782719021fbdfa46b1063ca
     return vvOutput;
 }

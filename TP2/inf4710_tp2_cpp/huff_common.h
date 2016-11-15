@@ -1,6 +1,11 @@
 
+<<<<<<< HEAD
 #pragma once
 
+=======
+#pragma once
+
+>>>>>>> d1084ba4883325c73782719021fbdfa46b1063ca
 #include "tp2.h"
 
 using HuffCode = std::vector<bool>;
