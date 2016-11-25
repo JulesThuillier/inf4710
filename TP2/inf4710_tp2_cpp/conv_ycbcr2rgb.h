@@ -17,14 +17,14 @@ inline void conv_ycbcr2rgb(const cv::Mat_<uchar>& Y, const cv::Mat_<uchar>& Cb, 
 			{
 				uchar R, G, B;
 				
-				R = Y.at<uchar>(i, j) + 1.403*(Cr.at<uchar>(i, j) - 128);
-				G = Y.at<uchar>(i, j) - 0.714*(Cr.at<uchar>(i, j) - 128) - 0.344*(Cb.at<uchar>(i, j) - 128);
-				B = Y.at<uchar>(i, j) + 1.773*(Cb.at<uchar>(i, j) - 128);
+				R = cv::saturate_cast<uchar>(Y.at<uchar>(i, j) + 1.403*(Cr.at<uchar>(i, j) - 128));
+				G = cv::saturate_cast<uchar>(Y.at<uchar>(i, j) - 0.714*(Cr.at<uchar>(i, j) - 128) - 0.344*(Cb.at<uchar>(i, j) - 128));
+				B = cv::saturate_cast<uchar>(Y.at<uchar>(i, j) + 1.773*(Cb.at<uchar>(i, j) - 128));
 
 				// Clamping
-				if (R < 0) { R = 0; } if (G < 0) { G = 0; } if (B < 0) { B = 0; }
+				/*if (R < 0) { R = 0; } if (G < 0) { G = 0; } if (B < 0) { B = 0; }
 				if (R > 255) { R = 255; } if (G > 255) { G = 255; } if (B > 255) { B = 255; }
-
+				*/
 				RGB.at<cv::Vec3b>(i, j)[0] = R;
 				RGB.at<cv::Vec3b>(i, j)[1] = G;
 				RGB.at<cv::Vec3b>(i, j)[2] = B;

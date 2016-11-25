@@ -22,6 +22,11 @@ inline cv::Mat_<Tout> quantif(const cv::Mat_<Tin>& oBlock, int nQualityFactor=10
     cv::Mat_<Tout> oOutput(oBlock.size());
 
     // @@@@ TODO (divide all elements in oBlock by those in oQuantifMat and return them rounded in oOutput)
+	for (int i = 0; i < oBlock.rows; i++) {
+		for (int j = 0; j < oBlock.cols; j++) {
+			oOutput.at<Tout>(i, j) = (Tout)(oBlock.at<Tin>(i, j) / oQuantifMat.at<Tin>(i, j));
+		}
+	}
     
     return oOutput;
 }
